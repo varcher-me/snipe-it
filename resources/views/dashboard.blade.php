@@ -240,16 +240,17 @@
                                 data-cookie-id-table="dashCategorySummary"
                                 data-height="400"
                                 data-side-pagination="server"
-                                data-sort-order="desc"
-                                data-sort-field="assets_count"
+                                data-sort-order="asc"
+                                data-sort-field="name"
                                 id="dashCategorySummary"
                                 class="table table-striped snipe-table"
-                                data-url="{{ route('api.categories.index', ['sort' => 'assets_count', 'order' => 'asc']) }}">
+                                data-url="{{ route('api.categories.index', ['sort' => 'name', 'order' => 'asc']) }}">
 
                             <thead>
                             <tr>
                                 <th class="col-sm-3" data-visible="true" data-field="name" data-formatter="categoriesLinkFormatter" data-sortable="true">{{ trans('general.name') }}</th>
                                 <th class="col-sm-3" data-visible="true" data-field="category_type" data-sortable="true">{{ trans('general.type') }}</th>
+                                <th class="col-sm-1" data-visible="true" data-field="assets_avail" data-sortable="true"><i class="fa fa-barcode"></i></th>
                                 <th class="col-sm-1" data-visible="true" data-field="assets_count" data-sortable="true"><i class="fa fa-barcode"></i></th>
                                 <th class="col-sm-1" data-visible="true" data-field="accessories_count" data-sortable="true"><i class="fa fa-keyboard-o"></i></th>
                                 <th class="col-sm-1" data-visible="true" data-field="consumables_count" data-sortable="true"><i class="fa fa-tint"></i></th>

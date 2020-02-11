@@ -31,6 +31,7 @@ class CategoriesTransformer
                 'checkin_email' => ($category->checkin_email =='1') ? true : false,
                 'require_acceptance' => ($category->require_acceptance =='1') ? true : false,
                 'assets_count' => (int) $category->assets_count,
+                'assets_avail' => (int) $category->assets_avail,
                 'accessories_count' => (int) $category->accessories_count,
                 'consumables_count' => (int) $category->consumables_count,
                 'components_count' => (int) $category->components_count,
