@@ -839,7 +839,7 @@ class AssetsController extends Controller
 
     //todo: ADD create bulk function
 
-    public function createBulk(Request $request){
+    public function createBulk(){
         $this->authorize('create', Asset::class);
         $view = View::make('hardware/createbulk')
             ->with('statuslabel_list', Helper::statusLabelList())
