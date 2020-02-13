@@ -67,6 +67,7 @@
                   <option value="edit">Edit</option>
                   <option value="delete">Delete</option>
                   <option value="labels">Generate Labels</option>
+                  <option value="forms">Generate Store Form</option>
                 </select>
                 <button class="btn btn-primary" id="bulkEdit" disabled>Go</button>
               </div>

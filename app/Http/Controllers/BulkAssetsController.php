@@ -49,6 +49,10 @@ class BulkAssetsController extends Controller
                     return view('hardware/bulk')
                         ->with('assets', request('ids'))
                         ->with('statuslabel_list', Helper::statusLabelList());
+                case 'forms':
+                    return view('hardware/storeform')
+                        ->with('assets', Asset::find($asset_ids))
+                        ->with('item', new Asset);
             }
         }
         return redirect()->back()->with('error', 'No action selected');
