@@ -837,8 +837,6 @@ class AssetsController extends Controller
         return view('hardware/requested', compact('requestedItems'));
     }
 
-    //todo: ADD create bulk function
-
     public function createBulk(){
         $this->authorize('create', Asset::class);
         $view = View::make('hardware/createbulk')
