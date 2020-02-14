@@ -16,9 +16,9 @@
 
     {{-- Form Tag --}}
     <div class="form-group {{ $errors->has('form_tag') ? ' has-error' : '' }}">
-        <label for="form-tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号</label>
+        <label for="form-tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号:</label>
         <div class="input-group col-md-3">
-            <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}JT-RK-XXXXXX" name="form-tag" id="form-tag" value="">
+            <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}GSJY-ITAM-YYYYSS" name="form-tag" id="form-tag" value="">
             {!! $errors->first('form_tag', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
         </div>
     </div>

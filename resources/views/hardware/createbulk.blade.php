@@ -17,6 +17,20 @@
 
     @include ('partials.forms.edit.status')
 
+    <!-- Serials -->
+    <div class="form-group {{ $errors->has('serial') ? ' has-error' : '' }}">
+        <label for="serial[1]" class="col-md-3 control-label">{{ trans('admin/hardware/form.serial') }} </label>
+        <div class="col-md-7 col-sm-12  required">
+            <input class="form-control" type="text" name="serials[1]" id="serial[1]" value="" placeholder="{{ trans('general.input_serial_bulk') }}" />
+            {!! $errors->first('serial', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
+        </div>
+        <div class="col-md-2 col-sm-12">
+            <button class="add_field_button btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+    <div class="input_serials_fields_wrap">
+    </div>
+
   @include ('partials.forms.edit.name', ['translated_name' => trans('admin/hardware/form.name')])
   @include ('partials.forms.edit.purchase_date')
   @include ('partials.forms.edit.supplier-select', ['translated_name' => trans('general.supplier'), 'fieldname' => 'supplier_id'])
@@ -27,7 +41,7 @@
   @include ('partials.forms.edit.requestable', ['requestable_text' => trans('admin/hardware/general.requestable')])
 
 
-    @include ('partials.forms.edit.serial-createbulk', ['translated_serial' => trans('admin/hardware/form.serial'), 'required' => 'true'])
+
 
 @stop
 
@@ -148,19 +162,19 @@
         // });
 
 
-        function readFile(file) {
-            var reader = new FileReader();
-
-            reader.onloadend = function () {
-                processFile(reader.result, file.type);
-            }
-
-            reader.onerror = function () {
-                alert("Unable to read file");
-            }
-
-            reader.readAsDataURL(file);
-        }
+        // function readFile(file) {
+        //     var reader = new FileReader();
+        //
+        //     reader.onloadend = function () {
+        //         processFile(reader.result, file.type);
+        //     }
+        //
+        //     reader.onerror = function () {
+        //         alert("Unable to read file");
+        //     }
+        //
+        //     reader.readAsDataURL(file);
+        // }
 
         // function processFile(dataURL, fileType) {
         //     var maxWidth = 800;
@@ -208,6 +222,47 @@
         //         alert('Unable to process file :(');
         //     }
         // }
+
+        $(document).ready(function() {
+            var max_fields      = 100; //maximum input boxes allowed
+            var wrapper         = $(".input_serials_fields_wrap"); //Fields wrapper
+            var add_button      = $(".add_field_button"); //Add button ID
+            console.log(add_button);
+            var x               = 1; //initial text box count
+            var seq             = 1;
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                var box_html        = '';
+                if (x < max_fields) {
+                    x++; //text box increment
+                    seq ++;
+                    console.log("Add button Clicked for seq = "+ seq);
+                    box_html += '<span class="fields_wrapper">';
+                    box_html += '<div class="form-group"><label for="serial" class="col-md-3 control-label"></label>';
+                    box_html += '<div class="col-md-7 col-sm-12">';
+                    box_html += '<input type="text"  class="form-control" name="serials[' + seq + ']" placeholder = {{ trans('general.more_serial_bulk') }}>';
+                    box_html += '</div>';
+                    box_html += '<div class="col-md-2 col-sm-12">';
+                    box_html += '<a href="#" class="remove_field btn btn-default btn-sm"><i class="fa fa-minus"></i></a>';
+                    box_html += '</div>';
+                    box_html += '</div>';
+                    box_html += '</span>';
+                    $(wrapper).append(box_html);
+                    // We have reached the maximum number of extra asset fields, so disable the button
+                } else {
+                    $(".add_field_button").attr('disabled');
+                    $(".add_field_button").addClass('disabled');
+                }
+            });
+            $(wrapper).on("click",".remove_field", function(e){ //user clicks on remove text
+                $(".add_field_button").removeAttr('disabled');
+                $(".add_field_button").removeClass('disabled');
+                e.preventDefault();
+                console.log("remove " + x);
+                $(this).parent('div').parent('div').parent('span').remove();
+                x--;
+            })
+        });
 
         function sendForm() {
             var form = $("#create-form").get(0);

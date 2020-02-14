@@ -862,7 +862,7 @@ class AssetsController extends Controller
         $assetSupplierId    = request('supplier_id', 0);
         $assetRequestable   = request('requestable', 0);
         $assetUserId        = Auth::id();
-        $assetSerialArray   = explode(";", $request->input('serial'));
+        $assetSerialArray   = request('serials');
 
         foreach ($assetSerialArray as $assetSerial) {
             $asset = new Asset();
