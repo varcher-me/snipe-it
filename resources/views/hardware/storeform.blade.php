@@ -1,8 +1,6 @@
 
-@extends('layouts/edit-form', [
-    'createText' => trans('admin/hardware/form.createbulk'),
-    'helpTitle' => trans('admin/hardware/general.about_assets_title'),
-    'helpText' => trans('admin/hardware/general.about_assets_text'),
+@extends('layouts/print-form', [
+    'createText' => trans('admin/hardware/form.storeform'),
     'formAction' => route('hardware/bulkedit'),
 ])
 
@@ -16,13 +14,32 @@
 
     {{-- Form Tag --}}
     <div class="form-group {{ $errors->has('form_tag') ? ' has-error' : '' }}">
-        <label for="form-tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号:</label>
+        <label for="form-tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号</label>
         <div class="input-group col-md-3">
             <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}GSJY-ITAM-YYYYSS" name="form-tag" id="form-tag" value="">
             {!! $errors->first('form_tag', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
         </div>
     </div>
-    {{--@foreach ($assets as $asset)--}}
+    <div class="form-group">
+        <label for="assets-list" class="col-md-3 control-label">资产清单</label>
+        <div class="input-group col-md-6">
+            <table class="table table-striped snipe-table" name="assets-list">
+                <tr>
+                    <td class="col-md-3">资产编号</td>
+                    <td class="col-md-3">型号</td>
+                    <td class="col-md-3">序列号</td>
+                </tr>
+    @foreach ($assets as $asset)
+                <tr>
+                    <input type="hidden" name="ids[{{ $loop->index }}]" id="ids[{{ $loop->index }}]" value="{{ $asset->id }}">
+                    <td>{{ $asset->asset_tag }}</td>
+                    <td>{{ \App\Models\AssetModel::find($asset->model_id)->name }}</td>
+                    <td>{{ $asset->serial }}</td>
+                </tr>
+    @endforeach
+            </table>
+        </div>
+    </div>
 @stop
 
 @section('moar_scripts')

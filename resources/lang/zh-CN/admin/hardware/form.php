@@ -14,6 +14,7 @@ return array(
     'cost'				=> '采购价格',
     'create'			=> '创建资产',
     'createbulk'			=> '批量创建资产',
+    'storeform'			=> '打印资产入库单',
     'date'				=> '购买时间',
     'depreciation'	    => '折旧',
     'depreciates_on'	=> '折旧于',
