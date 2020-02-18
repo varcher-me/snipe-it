@@ -33,7 +33,7 @@
                 <tr>
                     <input type="hidden" name="ids[{{ $loop->index }}]" id="ids[{{ $loop->index }}]" value="{{ $asset->id }}">
                     <td>{{ $asset->asset_tag }}</td>
-                    <td>{{ \App\Models\AssetModel::find($asset->model_id)->name }}</td>
+                    <td>{{ $asset->model->model_number }}</td>
                     <td>{{ $asset->serial }}</td>
                 </tr>
     @endforeach

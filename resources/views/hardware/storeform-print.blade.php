@@ -49,168 +49,27 @@
     @endif
 @endif
 
-<h4>Assigned to {{ $show_user->present()->fullName() }}</h4>
+<h4>IT固定资产入库单</h4>
 
-@if ($assets->count() > 0)
-    @php
-        $counter = 1;
-    @endphp
-    <table class="inventory">
-        <thead>
-        <tr>
-            <th colspan="7">{{ trans('general.assets') }}</th>
-        </tr>
-        </thead>
-        <thead>
-            <tr>
-                <th style="width: 20px;"></th>
-                <th style="width: 20%;">Asset Tag</th>
-                <th style="width: 20%;">Name</th>
-                <th style="width: 10%;">Category</th>
-                <th style="width: 20%;">Model</th>
-                <th style="width: 20%;">Serial</th>
-                <th style="width: 10%;">Checked Out</th>
-            </tr>
-        </thead>
-
-    @foreach ($assets as $asset)
-
-        <tr>
-            <td>{{ $counter }}</td>
-            <td>{{ $asset->asset_tag }}</td>
-            <td>{{ $asset->name }}</td>
-            <td>{{ $asset->model->category->name }}</td>
-            <td>{{ $asset->model->name }}</td>
-            <td>{{ $asset->serial }}</td>
-            <td>
-                {{ $asset->last_checkout }}</td>
-        </tr>
-            @php
-                $counter++
-            @endphp
-    @endforeach
-    </table>
-@endif
-
-@if ($licenses->count() > 0)
-    <br><br>
-    <table class="inventory">
-        <thead>
-        <tr>
-            <th colspan="4">{{ trans('general.licenses') }}</th>
-        </tr>
-        </thead>
-        <thead>
-            <tr>
-                <th style="width: 20px;"></th>
-                <th style="width: 40%;">Name</th>
-                <th style="width: 50%;">Serial/Product Key</th>
-                <th style="width: 10%;">Checked Out</th>
-            </tr>
-        </thead>
-        @php
-        $lcounter = 1;
-        @endphp
-
-        @foreach ($licenses as $license)
-
-            <tr>
-                <td>{{ $lcounter }}</td>
-                <td>{{ $license->name }}</td>
-                <td>
-                    @can('viewKeys', $license)
-                        {{ $license->serial }}
-                    @else
-                        ------------
-                    @endcan
-                </td>
-                <td>{{  $license->assetlog->first()->created_at }}</td>
-            </tr>
-            @php
-                $lcounter++
-            @endphp
-        @endforeach
-    </table>
-@endif
-
-
-@if ($accessories->count() > 0)
-    <br><br>
-    <table class="inventory">
-        <thead>
-        <tr>
-            <th colspan="4">{{ trans('general.accessories') }}</th>
-        </tr>
-        </thead>
-        <thead>
-            <tr>
-                <th style="width: 20px;"></th>
-                <th style="width: 40%;">Name</th>
-                <th style="width: 50%;">Category</th>
-                <th style="width: 10%;">Checked Out</th>
-            </tr>
-        </thead>
-        @php
-            $acounter = 1;
-        @endphp
-
-        @foreach ($accessories as $accessory)
-
-            <tr>
-                <td>{{ $acounter }}</td>
-                <td>{{ ($accessory->manufacturer) ? $accessory->manufacturer->name : '' }} {{ $accessory->name }} {{ $accessory->model_number }}</td>
-                <td>{{ $accessory->category->name }}</td>
-                <td>{{  $accessory->assetlog->first()->created_at }}</td>
-            </tr>
-            @php
-                $acounter++
-            @endphp
-        @endforeach
-    </table>
-@endif
-
-@if ($consumables->count() > 0)
-    <br><br>
-    <table class="inventory">
-        <thead>
-        <tr>
-            <th colspan="4">{{ trans('general.consumables') }}</th>
-        </tr>
-        </thead>
-        <thead>
+<table class="inventory">
+    <thead>
         <tr>
             <th style="width: 20px;"></th>
-            <th style="width: 40%;">Name</th>
-            <th style="width: 50%;">Category</th>
-            <th style="width: 10%;">Checked Out</th>
+            <th style="width: 20%;">资产编号</th>
+            <th style="width: 20%;">型号</th>
+            <th style="width: 10%;">序列号</th>
         </tr>
-        </thead>
-        @php
-            $ccounter = 1;
-        @endphp
+    </thead>
 
-        @foreach ($consumables as $consumable)
-
-            <tr>
-                <td>{{ $ccounter }}</td>
-
-
-                <td>
-                    @if ($consumable->deleted_at!='')
-                        <del>{{ ($consumable->manufacturer) ? $consumable->manufacturer->name : '' }}  {{ $consumable->name }} {{ $consumable->model_number }}</del>
-                    @else
-                        {{ ($consumable->manufacturer) ? $consumable->manufacturer->name : '' }}  {{ $consumable->name }} {{ $consumable->model_number }}
-                    @endif
-                </td>
-                <td>{{ ($consumable->category) ? $consumable->category->name : '' }}</td>
-                <td>{{ ($consumable->assetlog) ? $consumable->assetlog->first()->created_at : '' }}</td>
-            </tr>
-            @php
-                $ccounter++
-            @endphp
-        @endforeach
-    </table>
-@endif
+@foreach ($assets as $asset)
+    <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{ $asset->asset_tag }}</td>
+        <td>{{ $asset->model->model_number }}</td>
+        <td>{{ $asset->serial }}</td>
+    </tr>
+@endforeach
+</table>
 
 <br>
 <br>
