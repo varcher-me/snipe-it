@@ -137,6 +137,14 @@ Route::group(
             ]
         );
 
+        Route::post(
+            'storeformprint',
+            [
+                'as'   => 'hardware.storeform.print',
+                'uses' => 'BulkAssetsController@storeFormPrint'
+            ]
+        );
+
 
         Route::get(
             'createbulk',

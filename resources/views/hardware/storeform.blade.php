@@ -1,7 +1,7 @@
 
 @extends('layouts/print-form', [
     'createText' => trans('admin/hardware/form.storeform'),
-    'formAction' => route('hardware/bulkedit'),
+    'formAction' => route('hardware.storeform.print'),
 ])
 
 
@@ -14,15 +14,15 @@
 
     {{-- Form Tag --}}
     <div class="form-group {{ $errors->has('form_tag') ? ' has-error' : '' }}">
-        <label for="form-tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号</label>
+        <label for="form_tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号</label>
         <div class="input-group col-md-3">
-            <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}GSJY-ITAM-YYYYSS" name="form-tag" id="form-tag" value="">
+            <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}GSJY-ITAM-YYYYSS" name="form_tag" id="form_tag" value="">
             {!! $errors->first('form_tag', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
         </div>
     </div>
     <div class="form-group">
         <label for="assets-list" class="col-md-3 control-label">资产清单</label>
-        <div class="input-group col-md-6">
+        <div class="input-group col-md-8">
             <table class="table table-striped snipe-table" name="assets-list">
                 <tr>
                     <td class="col-md-3">资产编号</td>

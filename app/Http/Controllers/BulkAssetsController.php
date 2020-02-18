@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\CheckInOutRequest;
+use App\Http\Transformers\CompaniesTransformer;
 use App\Models\Asset;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\MessageBag;
+use App\Models\Company;
 
 class BulkAssetsController extends Controller
 {
@@ -249,5 +252,32 @@ class BulkAssetsController extends Controller
         } catch (ModelNotFoundException $e) {
             return redirect()->to("hardware/bulk-checkout")->with('error', $e->getErrors());
         }
+    }
+
+    public function storeFormPrint(Request $request)
+    {
+        $error = new MessageBag;
+        if (!($request->input("company_id"))) {
+            $error->add("company_id", "company_id cannot be empty.");
+        }
+        if (!($request->input("purchase_date"))) {
+            $error->add("purchase_date", "purchase_date cannot be empty.");
+        }
+        if (!($request->input("form_tag"))) {
+            $error->add("form_tag", "form_tag cannot be empty.");
+        }
+        if ($error) {
+            \Input::flash();
+            \Session::flash('errors', $error);
+            return response()->json(['errors' => $error], 500);
+        }
+
+        $company = Company::find($request->input('company_id'));
+        $assets = Asset::find($request->input("ids"));
+
+//        return view('hardware/storeform')
+//            ->with('assets', Asset::find($asset_ids))
+//            ->with('item', new Asset);
+
     }
 }

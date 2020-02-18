@@ -58,6 +58,9 @@ class AppServiceProvider extends ServiceProvider
         if (($this->app->environment('production'))  && (config('services.rollbar.access_token'))){
             $this->app->register(\Rollbar\Laravel\RollbarServiceProvider::class);
         }
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
         
         foreach ($monolog->getHandlers() as $handler) {
             $handler->setLevel($log_level);
