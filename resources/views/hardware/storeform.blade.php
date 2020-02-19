@@ -47,10 +47,10 @@
 
     $(function () {
 
-        $("#create-form").submit(function (event) {
-            event.preventDefault();
-            return sendForm();
-        });
+        // $("#create-form").submit(function (event) {  //todo : 提交按钮后的异常判断
+        //     event.preventDefault();
+        //     return sendForm();
+        // });
 
         function sendForm() {
             var form = $("#create-form").get(0);
