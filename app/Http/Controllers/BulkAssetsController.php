@@ -278,11 +278,12 @@ class BulkAssetsController extends Controller
         \Session::flash('success', trans('admin/hardware/message.create.success'));
 
 //        return response()->json(['redirect_url' => route('hardware.index')]);
-        return view("hardware/storeform-print")
-            ->with('form_tag', $request->input("form_tag"))
-            ->with('purchase_date', $request->input("purchase_date"))
-            ->with('assets', $assets)
-            ->with('company', $company);
+        return response()->view("hardware/storeform-print", [
+            "form_tag" => $request->input("form_tag"),
+            'purchase_date' => $request->input("purchase_date"),
+            'assets' => $assets,
+            'company'=> $company
+            ],200);
 
     }
 }

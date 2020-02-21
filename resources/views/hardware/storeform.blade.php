@@ -47,10 +47,10 @@
 
     $(function () {
 
-        // $("#create-form").submit(function (event) {  //todo : 提交按钮后的异常判断
-        //     event.preventDefault();
-        //     return sendForm();
-        // });
+        $("#create-form").submit(function (event) {
+            event.preventDefault();
+            return sendForm();
+        });
 
         function sendForm() {
             var form = $("#create-form").get(0);
@@ -64,16 +64,13 @@
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
                 },
                 data: formData,
-                dataType: 'json',
+                dataType: 'html',
                 success: function (data) {
                     // console.dir(data);
                     // AssetController flashes success to session, redirect to hardware page.
-                    if (data.redirect_url) {
-                        window.location.href = data.redirect_url;
-                        return true;
-                    }
-                    window.location.reload(true);
-                    return false;
+                    document.write(data);
+                    console(data);
+                    return true;
 
                 },
                 error: function (data) {
