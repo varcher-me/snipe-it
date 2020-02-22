@@ -122,7 +122,7 @@
     <div class="qr_text">
         @if ($settings->qr_text!='')
         <div class="pull-left">
-            <strong>{{ $settings->qr_text }}</strong>
+            <strong>{{ $asset->company->name.$settings->qr_text }}</strong>
             <br>
         </div>
         @endif
