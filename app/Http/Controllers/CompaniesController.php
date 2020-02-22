@@ -111,10 +111,15 @@ final class CompaniesController extends Controller
         $this->authorize('update', $company);
 
         $company->name = $request->input('name');
+        $company->full_name = $request->input('full_name');
 
         // Set the model's image property to null if the image is being deleted
         if ($request->input('image_delete') == 1) {
             $company->image = null;
+        }
+
+        if ($request->input('banner_delete') == 1) {
+            $company->banner_image = null;
         }
 
         $company = $request->handleImages($company,600, public_path().'/uploads/companies');
