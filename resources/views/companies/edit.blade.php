@@ -9,12 +9,22 @@
 {{-- Page content --}}
 @section('inputFields')
 @include ('partials.forms.edit.name', ['translated_name' => trans('admin/companies/table.name')])
+
 <!-- Full Name -->
 <div class="form-group {{ $errors->has('full_name') ? ' has-error' : '' }}">
-    <label for="name" class="col-md-3 control-label">{{ trans('admin/companies/table.full_name') }}</label>
+    <label for="full_name" class="col-md-3 control-label">{{ trans('admin/companies/table.full_name') }}</label>
     <div class="col-md-7 col-sm-12{{  (\App\Helpers\Helper::checkIfRequired($item, 'name')) ? ' required' : '' }}">
         <input class="form-control" type="text" name="full_name" id="full_name" value="{{ Input::old('full_name', $item->full_name) }}" />
         {!! $errors->first('full_name', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
+    </div>
+</div>
+
+<!-- abbreviation -->
+<div class="form-group {{ $errors->has('abbreviation') ? ' has-error' : '' }}">
+    <label for="abbreviation" class="col-md-3 control-label">{{ trans('admin/companies/table.abbreviation') }}</label>
+    <div class="col-md-7 col-sm-12{{  (\App\Helpers\Helper::checkIfRequired($item, 'name')) ? ' required' : '' }}">
+        <input class="form-control" type="text" name="abbreviation" id="abbreviation" value="{{ Input::old('abbreviation', $item->abbreviation) }}" />
+        {!! $errors->first('abbreviation', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
     </div>
 </div>
 

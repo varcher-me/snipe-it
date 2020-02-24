@@ -9,4 +9,5 @@ return array(
     'id'        => '编号',
     'logo' => '公司图标',
     'banner'    => '公司标识',
+    'abbreviation'  =>  '英文缩写',
 );
