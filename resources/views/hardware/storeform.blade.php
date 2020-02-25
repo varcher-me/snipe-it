@@ -12,14 +12,6 @@
     @include ('partials.forms.edit.company-select', ['translated_name' => trans('general.company'), 'fieldname' => 'company_id'])
     @include ('partials.forms.edit.purchase_date')
 
-    {{-- Form Tag --}}
-    <div class="form-group {{ $errors->has('form_tag') ? ' has-error' : '' }}">
-        <label for="form_tag" class="col-md-3 control-label">{{-- trans('general.purchase_date') --}}入库单编号</label>
-        <div class="input-group col-md-3">
-            <input type="text" class="form-control" placeholder="{{-- trans('general.select_date')--}}GSJY-ITAM-YYYYSS" name="form_tag" id="form_tag" value="">
-            {!! $errors->first('form_tag', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>') !!}
-        </div>
-    </div>
     <div class="form-group">
         <label for="assets-list" class="col-md-3 control-label">资产清单</label>
         <div class="input-group col-md-8">
@@ -69,7 +61,7 @@
                     // console.dir(data);
                     // AssetController flashes success to session, redirect to hardware page.
                     document.write(data);
-                    console(data);
+                    // console(data);
                     return true;
 
                 },

@@ -21,11 +21,12 @@ final class CompaniesController extends Controller
 {
 
     /**
-    * Returns view to display listing of companies.
-    *
-    * @author [Abdullah Alansari] [<ahimta@gmail.com>]
-    * @since [v1.8]
-    * @return \Illuminate\Contracts\View\View
+     * Returns view to display listing of companies.
+     *
+     * @author [Abdullah Alansari] [<ahimta@gmail.com>]
+     * @since [v1.8]
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
@@ -35,11 +36,12 @@ final class CompaniesController extends Controller
     }
 
     /**
-    * Returns view to create a new company.
-    *
-    * @author [Abdullah Alansari] [<ahimta@gmail.com>]
-    * @since [v1.8]
-    * @return \Illuminate\Contracts\View\View
+     * Returns view to create a new company.
+     *
+     * @author [Abdullah Alansari] [<ahimta@gmail.com>]
+     * @since [v1.8]
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
@@ -53,8 +55,9 @@ final class CompaniesController extends Controller
      *
      * @author [Abdullah Alansari] [<ahimta@gmail.com>]
      * @since [v1.8]
-     * @param Request $request
+     * @param ImageUploadRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(ImageUploadRequest $request)
     {
@@ -76,12 +79,13 @@ final class CompaniesController extends Controller
 
 
     /**
-    * Return form to edit existing company.
-    *
-    * @author [Abdullah Alansari] [<ahimta@gmail.com>]
-    * @since [v1.8]
-    * @param int $companyId
-    * @return \Illuminate\Contracts\View\View
+     * Return form to edit existing company.
+     *
+     * @author [Abdullah Alansari] [<ahimta@gmail.com>]
+     * @since [v1.8]
+     * @param int $companyId
+     * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($companyId)
     {
@@ -103,6 +107,7 @@ final class CompaniesController extends Controller
      * @param Request $request
      * @param int $companyId
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(ImageUploadRequest $request, $companyId)
     {
@@ -133,12 +138,13 @@ final class CompaniesController extends Controller
     }
 
     /**
-    * Delete company
-    *
-    * @author [Abdullah Alansari] [<ahimta@gmail.com>]
-    * @since [v1.8]
-    * @param int $companyId
-    * @return \Illuminate\Http\RedirectResponse
+     * Delete company
+     *
+     * @author [Abdullah Alansari] [<ahimta@gmail.com>]
+     * @since [v1.8]
+     * @param int $companyId
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy($companyId)
     {

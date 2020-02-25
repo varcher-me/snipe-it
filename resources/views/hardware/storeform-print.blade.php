@@ -14,7 +14,7 @@
 <div align="center">
     <p style="margin-top:8px; text-align:center"><span style="font-family:方正小标宋简体; font-size:32pt">{{ $company->full_name }}</span></p>
     <p style="margin-top:8px; orphans:0; text-align:center; widows:0"><span style="font-family:方正小标宋简体; font-size:32pt">IT固定资产入库单</span></p>
-    <p style="margin-bottom:8px; margin-right: 60px; orphans:0;  text-align: right; widows:0"><span style="font-family:方正小标宋简体; font-size:24pt">编号：<u>{{ $form_tag }}</u></span></p>
+    <p style="margin-bottom:8px; margin-right: 60px; orphans:0;  text-align: right; widows:0"><span style="font-family:方正小标宋简体; font-size:24pt">编号：<u>{{ $company->abbreviation.'-ITAM-RK-'.date("Y-Ww", strtotime($purchase_date)) }}</u></span></p>
     <p style="margin-bottom:50px; margin-right: 60px; orphans:0; text-align: right; widows:0"><span style="font-family:方正小标宋简体; font-size:24pt">日期：<u>{{ $purchase_date }}</u></span></p>
     <table cellspacing="0" cellpadding="0" style="border-collapse:collapse; margin-left:0pt; width:800pt">
         <thead>

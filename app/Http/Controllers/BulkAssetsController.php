@@ -254,6 +254,13 @@ class BulkAssetsController extends Controller
         }
     }
 
+    /**
+     * Print Asset Store Form
+     *
+     * @author varcher
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     */
     public function storeFormPrint(Request $request)
     {
         $error = new MessageBag;
@@ -262,9 +269,6 @@ class BulkAssetsController extends Controller
         }
         if (!($request->input("purchase_date"))) {
             $error->add("purchase_date", "purchase_date cannot be empty.");
-        }
-        if (!($request->input("form_tag"))) {
-            $error->add("form_tag", "form_tag cannot be empty.");
         }
         if ($error->isNotEmpty()) {
             \Input::flash();
@@ -276,7 +280,6 @@ class BulkAssetsController extends Controller
         $assets = Asset::find($request->input("ids"));
 
         return view("hardware/storeform-print")
-                ->with("form_tag" , $request->input("form_tag"))
                 ->with('purchase_date' , $request->input("purchase_date"))
                 ->with( 'assets' , $assets)
                 ->with('company', $company);
