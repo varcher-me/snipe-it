@@ -320,6 +320,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SettingsServiceProvider::class,
         App\Providers\ValidationServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 
         /*

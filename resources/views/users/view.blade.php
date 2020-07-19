@@ -551,11 +551,12 @@
               <thead>
               <tr>
                 <th data-field="icon" style="width: 40px;" class="hidden-xs" data-formatter="iconFormatter"></th>
-                <th class="col-sm-3" data-field="created_at" data-formatter="dateDisplayFormatter" data-sortable="true">{{ trans('general.date') }}</th>
-                <th class="col-sm-2" data-field="admin" data-formatter="usersLinkObjFormatter">{{ trans('general.admin') }}</th>
-                <th class="col-sm-2" data-field="action_type">{{ trans('general.action') }}</th>
+                <th class="col-sm-2" data-field="created_at" data-formatter="dateDisplayFormatter" data-sortable="true">{{ trans('general.date') }}</th>
+                <th class="col-sm-1" data-field="admin" data-formatter="usersLinkObjFormatter">{{ trans('general.admin') }}</th>
+                <th class="col-sm-1" data-field="action_type">{{ trans('general.action') }}</th>
                 <th class="col-sm-3" data-field="item" data-formatter="polymorphicItemFormatter">{{ trans('general.item') }}</th>
-                <th class="col-sm-2" data-field="target" data-formatter="polymorphicItemFormatter">{{ trans('general.target') }}</th>
+                <th class="col-sm-1" data-field="target" data-formatter="polymorphicItemFormatter">{{ trans('general.target') }}</th>
+                <th class="col-sm-5" data-field="note">{{ trans('general.notes') }}</th>
               </tr>
               </thead>
             </table>

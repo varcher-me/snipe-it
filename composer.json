@@ -8,6 +8,7 @@
     "php": ">=7.1.2",
     "barryvdh/laravel-cors": "^0.11.3",
     "barryvdh/laravel-debugbar": "^3.2",
+    "barryvdh/laravel-ide-helper": "^2.6",
     "doctrine/cache": "^1.8",
     "doctrine/common": "^2.10",
     "doctrine/dbal": "2.9.0",
@@ -42,7 +43,6 @@
     "watson/validating": "^3.0"
   },
     "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.6",
     "codeception/codeception": "2.3.6",
     "filp/whoops": "~2.0",
     "fzaninotto/faker": "~1.4",
